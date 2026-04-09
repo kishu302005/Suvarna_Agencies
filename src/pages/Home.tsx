@@ -44,6 +44,30 @@ const heroSlides: HeroSlide[] = [
         link: '/category/washing-machines',
         btnText: 'View All',
     },
+    {
+        id: 4,
+        image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+        title: 'Modern Kitchen Essentials',
+        subtitle: 'Upgrade your kitchen with our top appliances',
+        link: '/category',
+        btnText: 'Shop Now',
+    },
+    {
+        id: 5,
+        image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+        title: 'Modern Kitchen Essentials',
+        subtitle: 'Upgrade your kitchen with our top appliances',
+        link: '/category',
+        btnText: 'Shop Now',
+    },
+    {
+        id: 6,
+        image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+        title: 'Modern Kitchen Essentials',
+        subtitle: 'Upgrade your kitchen with our top appliances',
+        link: '/category',
+        btnText: 'Shop Now',
+    },
 ];
 
 const featuredProducts: Product[] = [
@@ -64,6 +88,24 @@ const featuredProducts: Product[] = [
         name: 'Microwave Oven',
         price: 299,
         image: 'https://images.unsplash.com/photo-1585659722983-39cb8eca8da3?auto=format&fit=crop&q=80&w=400',
+    },
+    {
+        id: 4,
+        name: '4K Ultra HD TV',
+        price: 799,
+        image: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&q=80&w=400',
+    },
+    {
+        id: 5,
+        name: 'Inverter Air Conditioner',
+        price: 549,
+        image: 'https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&q=80&w=400',
+    },
+    {
+        id: 6,
+        name: 'Espresso Coffee Machine',
+        price: 199,
+        image: 'https://images.unsplash.com/photo-1510210080823-38f32ac29c9d?auto=format&fit=crop&q=80&w=400',
     },
 ];
 
@@ -106,7 +148,7 @@ const styles: Record<string, React.CSSProperties> = {
         fontWeight: 500,
         cursor: 'pointer',
         textDecoration: 'none',
-        background: '#2563eb',
+        background: '#ec4899',
         color: '#fff',
         border: 'none',
     },
@@ -126,15 +168,21 @@ const styles: Record<string, React.CSSProperties> = {
     sectionTitle: { fontSize: '22px', fontWeight: 600, marginBottom: '1.25rem' },
     productGrid: {
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        gap: '20px',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: '24px',
+        maxWidth: '1200px',
+        margin: '0 auto',
     },
     productCard: { background: '#fff', border: '1px solid #e5e7eb', borderRadius: '12px', overflow: 'hidden' },
     imageContainer: { height: '180px', overflow: 'hidden' },
     productImage: { width: '100%', height: '100%', objectFit: 'cover', display: 'block' },
     productInfo: { padding: '14px 16px 16px' },
     productName: { fontSize: '15px', fontWeight: 500, marginBottom: '6px' },
-    price: { fontSize: '16px', fontWeight: 600, color: '#2563eb', marginBottom: '12px' },
+    price: { fontSize: '16px', fontWeight: 600, color: '#ec4899', marginBottom: '12px' },
+    introSection: { padding: '4rem 1.5rem', background: '#f8fafc', textAlign: 'center' as const },
+    introContainer: { maxWidth: '800px', margin: '0 auto' },
+    introTitle: { fontSize: '28px', fontWeight: 700, marginBottom: '1rem', color: '#111827' },
+    introText: { fontSize: '16px', lineHeight: '1.6', color: '#4b5563' },
 };
 
 export default function Home() {
@@ -164,6 +212,16 @@ export default function Home() {
                     ))}
                 </Slider>
             </div>
+
+            {/* Introduction Section */}
+            <section style={styles.introSection}>
+                <div style={styles.introContainer}>
+                    <h2 style={styles.introTitle}>Suvarna Agency – Comfort Meets Reliability</h2>
+                    <p style={styles.introText}>
+                        Enhance your home with thoughtfully designed appliances and kitchen solutions that simplify everyday living. At Suvarna Agency, we focus on quality, durability, and comfort—creating products that naturally fit into your lifestyle and make every day easier.
+                    </p>
+                </div>
+            </section>
 
             {/* Featured Products */}
             <section style={styles.featuredSection}>
