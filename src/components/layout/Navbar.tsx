@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <nav className="navbar" onMouseLeave={() => setIsMegaMenuOpen(false)}>
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">Suvarna Agency</Link>
+        <Link to="/" className="navbar-logo">Suvarna</Link>
 
         <div className="navbar-links">
           {/* Category Trigger */}
