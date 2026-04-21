@@ -1,53 +1,35 @@
 // src/features/products/productAPI.ts
 
-import { supabase } from '../../services/supabaseClient';
 import { Product, ProductCategory } from '../../types/product';
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const productAPI = {
     // Fetch all products
     async getProducts(): Promise<Product[]> {
-        const { data, error } = await supabase
-            .from('products')
-            .select('*')
-            .order('created_at', { ascending: false });
-
-        if (error) throw error;
-        return data as Product[];
+        const res = await fetch(`${API_URL}/products`);
+        if (!res.ok) throw new Error('Failed to fetch products');
+        return res.json();
     },
 
     // Fetch products by category
     async getProductsByCategory(category: ProductCategory): Promise<Product[]> {
-        const { data, error } = await supabase
-            .from('products')
-            .select('*')
-            .eq('category', category)
-            .order('rating', { ascending: false });
-
-        if (error) throw error;
-        return data as Product[];
+        const res = await fetch(`${API_URL}/products?category=${category}`);
+        if (!res.ok) throw new Error('Failed to fetch category products');
+        return res.json();
     },
 
     // Fetch single product
     async getProductById(id: string): Promise<Product> {
-        const { data, error } = await supabase
-            .from('products')
-            .select('*')
-            .eq('id', id)
-            .single();
-
-        if (error) throw error;
-        return data as Product;
+        const res = await fetch(`${API_URL}/products/${id}`);
+        if (!res.ok) throw new Error('Failed to fetch product');
+        return res.json();
     },
 
     // Search products
     async searchProducts(query: string): Promise<Product[]> {
-        const { data, error } = await supabase
-            .from('products')
-            .select('*')
-            .ilike('name', `%${query}%`)
-            .limit(20);
-
-        if (error) throw error;
-        return data as Product[];
+        const res = await fetch(`${API_URL}/products/search?q=${query}`);
+        if (!res.ok) throw new Error('Search failed');
+        return res.json();
     },
 };
