@@ -6,7 +6,7 @@ export default function Login() {
             <div className="login-container">
                 <h2>Welcome Back</h2>
                 <p>Sign in to your account</p>
-                
+
                 <form className="login-form">
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
@@ -18,7 +18,7 @@ export default function Login() {
                     </div>
                     <button type="button" className="btn btn-primary full-width">Sign In</button>
                 </form>
-                
+
                 <div className="login-footer">
                     <p>Don't have an account? <Link to="/">Sign up</Link></p>
                 </div>

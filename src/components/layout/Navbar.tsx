@@ -5,12 +5,12 @@ import { ShoppingCart, User, Search, ChevronDown, Lightbulb, Wind, Coffee, Tv } 
 export default function Navbar() {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
 
-  // Example data structure for the menu
+  // Categories matching the database/routes
   const categories = [
-    { name: 'Lights', icon: <Lightbulb size={24} />, items: ['Bulbs', 'Battens', 'Table Lamps'] },
-    { name: 'Fans', icon: <Wind size={24} />, items: ['Ceiling Fans', 'Table Fans', 'Exhaust Fans'] },
-    { name: 'Appliances', icon: <Coffee size={24} />, items: ['Mixers', 'Irons', 'Air Coolers'] },
-    { name: 'TV & Audio', icon: <Tv size={24} />, items: ['Smart TVs', 'Speakers', 'Soundbars'] },
+    { name: 'Refrigerators', slug: 'refrigerators', icon: <Coffee size={24} />, items: ['Single Door', 'Double Door', 'Side by Side'] },
+    { name: 'Washing Machines', slug: 'washing-machines', icon: <Wind size={24} />, items: ['Front Load', 'Top Load', 'Semi-Automatic'] },
+    { name: 'Air Conditioners', slug: 'air-conditioners', icon: <Wind size={24} />, items: ['Split AC', 'Window AC', 'Inverter AC'] },
+    { name: 'Kitchen Appliances', slug: 'kitchen-appliances', icon: <Coffee size={24} />, items: ['Microwaves', 'Mixer Grinders', 'Water Purifiers'] },
   ];
 
   return (
@@ -24,9 +24,9 @@ export default function Navbar() {
             className="nav-item-wrapper"
             onMouseEnter={() => setIsMegaMenuOpen(true)}
           >
-            <button className="nav-link category-trigger">
+            <Link to="/category" className="nav-link category-trigger">
               Categories <ChevronDown size={16} className={isMegaMenuOpen ? 'rotate' : ''} />
-            </button>
+            </Link>
           </div>
 
           <Link to="/about" className="nav-link">About Us</Link>
@@ -49,13 +49,20 @@ export default function Navbar() {
           <div className="megamenu-container">
             {categories.map((cat) => (
               <div key={cat.name} className="megamenu-column">
-                <div className="category-header">
+                <Link to={`/category/${cat.slug}`} className="category-header" onClick={() => setIsMegaMenuOpen(false)}>
                   {cat.icon}
                   {cat.name}
-                </div>
+                </Link>
                 <ul className="subcategory-list">
                   {cat.items.map(item => (
-                    <li key={item}><Link to={`/category/${item.toLowerCase()}`}>{item}</Link></li>
+                    <li key={item}>
+                      <Link 
+                        to={`/category/${cat.slug}`} 
+                        onClick={() => setIsMegaMenuOpen(false)}
+                      >
+                        {item}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </div>
